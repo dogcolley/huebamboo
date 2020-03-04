@@ -166,9 +166,9 @@ $set_tag : 'span', 'p', 'div','a','em','strong';
 	    &wd{
             &_full {width:100%}
             @for $i from 1 through 100{
-				&_P#{$i}, &_CP#{$i} > * {width: $i+'%'}
+				&_P#{$i}, &_CP#{$i} > * {width: #{$i+'%'}}
 				@each $tag in $set_tag{
-					&_P#{$i}_#{$tag} #{$tag} {width: $i+'%'}				
+					&_P#{$i}_#{$tag} #{$tag} {width: #{$i+'%'}}				
 				} 
             }
 		}
@@ -176,9 +176,9 @@ $set_tag : 'span', 'p', 'div','a','em','strong';
 		&ht{
             &_full {height:100%}       
             @for $i from 1 through 100{
-				&_P#{$i*1} ,  &_CP#{$i*1} > * {height: $i+'%'}
+				&_P#{$i*1} ,  &_CP#{$i*1} > * {height: #{$i+'%'}}
 				@each $tag in $set_tag{
-					&_P#{$i}_#{$tag} #{$tag} {width: $i+'%'}				
+					&_P#{$i}_#{$tag} #{$tag} {width: #{$i+'%'}}				
 				}
             }
 		}
@@ -243,41 +243,41 @@ $set_tag : 'span', 'p', 'div','a','em','strong';
 		
 		&pd_{
 			@for $i from 1 through 100{
-				&Plt#{$i}{padding-left:$i+'%'}
-				&Prt#{$i}{padding-right:$i+'%'}
-				&Ptop#{$i}{padding-top:$i+'%'} 
-				&Pbtm#{$i}{padding-bottom:$i+'%'}
-				&Pwd#{$i}{padding-left:$i+'%';padding-right:$i+'%'}
-				&Pht#{$i}{padding-bottom:$i+'%';padding-top:$i+'%'}
-				&Pall#{$i}{padding:$i+'%'}
+				&Plt#{$i}{padding-left:#{$i+'%'}}
+				&Prt#{$i}{padding-right:#{$i+'%'}}
+				&Ptop#{$i}{padding-top:#{$i+'%'}} 
+				&Pbtm#{$i}{padding-bottom:#{$i+'%'}}
+				&Pwd#{$i}{padding-left:#{$i+'%'};padding-right:#{$i+'%'}}
+				&Pht#{$i}{padding-bottom:#{$i+'%'};padding-top:#{$i+'%'}}
+				&Pall#{$i}{padding:#{$i+'%'}}
 				
-				&CPlt#{$i} > *{padding-left:$i+'%'}
-				&CPrt#{$i} > *{padding-right:$i+'%'}
-				&CPtop#{$i} > *{padding-top:$i+'%'} 
-				&CPbtm#{$i} > *{padding-bottom:$i+'%'}
-				&CPwd#{$i} > *{padding-left:$i+'%';padding-right:$i+'%'}
-				&CPht#{$i} > *{padding-bottom:$i+'%';padding-top:$i+'%'}
-                &CPall#{$i} > *{padding:$i+'%'}
+				&CPlt#{$i} > *{padding-left:#{$i+'%'}}
+				&CPrt#{$i} > *{padding-right:#{$i+'%'}}
+				&CPtop#{$i} > *{padding-top:#{$i+'%'}} 
+				&CPbtm#{$i} > *{padding-bottom:#{$i+'%'}}
+				&CPwd#{$i} > *{padding-left:#{$i+'%'};padding-right:#{$i+'%'}}
+				&CPht#{$i} > *{padding-bottom:#{$i+'%'};padding-top:#{$i+'%'}}
+                &CPall#{$i} > *{padding:#{$i+'%'}}
 			}   
 		}  
 	
 		&mg_{
 			@for $i from 1 through 100{
-				&Plt#{$i}{margin-left:$i+'%'}
-				&Prt#{$i}{margin-right:$i+'%'}
-				&Ptop#{$i}{margin-top:$i+'%'} 
-				&Pbtm#{$i}{margin-bottom:$i+'%'}
-				&Pwd#{$i}{margin-left:$i+'%';margin-right:$i+'%'}
-				&Pht#{$i}{margin-bottom:$i+'%';margin-top:$i+'%'}
-				&Pall#{$i}{margin:$i+'%'}
+				&Plt#{$i}{margin-left:#{$i+'%'}}
+				&Prt#{$i}{margin-right:#{$i+'%'}}
+				&Ptop#{$i}{margin-top:#{$i+'%'}} 
+				&Pbtm#{$i}{margin-bottom:#{$i+'%'}}
+				&Pwd#{$i}{margin-left:#{$i+'%'};margin-right:#{$i+'%'}}
+				&Pht#{$i}{margin-bottom:#{$i+'%'};margin-top:#{$i+'%'}}
+				&Pall#{$i}{margin:#{$i+'%'}}
 					
-				&CPlt#{$i} > *{margin-left:$i+'%'}
-				&CPrt#{$i} > *{margin-right:$i+'%'}
-				&CPtop#{$i} > *{margin-top:$i+'%'} 
-				&CPbtm#{$i} > *{margin-bottom:$i+'%'}
-				&CPwd#{$i} > *{margin-left:$i+'%';margin-right:$i+'%'}
-				&CPht#{$i} > *{margin-bottom:$i+'%';margin-top:$i+'%'}
-				&CPall#{$i} > *{margin:$i+'%'}
+				&CPlt#{$i} > *{margin-left:#{$i+'%'}}
+				&CPrt#{$i} > *{margin-right:#{$i+'%'}}
+				&CPtop#{$i} > *{margin-top:#{$i+'%'}} 
+				&CPbtm#{$i} > *{margin-bottom:#{$i+'%'}}
+				&CPwd#{$i} > *{margin-left:#{$i+'%'};margin-right:#{$i+'%'}}
+				&CPht#{$i} > *{margin-bottom:#{$i+'%'};margin-top:#{$i+'%'}}
+				&CPall#{$i} > *{margin:#{$i+'%'}}
 				}
 			}
 		
