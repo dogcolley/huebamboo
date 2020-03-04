@@ -8,9 +8,9 @@
 /*@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');*/
 
 
-$S_M: 640px; 
+$S_M: 768px; 
 $S_T: 1024px;
-$S_W: 1200;
+$S_W: 1300;
 
 /*mixin and function 모음*/
 @mixin clear {content:'';clear:both;display:block}
@@ -29,9 +29,9 @@ $S_W: 1200;
 /*SCSS*/
 
 $breakpoints: (
-        'small': (max-width: 640px),
+        'small': (max-width: 768px),
         'medium': (max-width: 1024px),
-        'large': (max-width: 1200px),
+        'large': (max-width: 1300px),
 ) !default;
 
 @mixin respond-to($breakpoint) {
@@ -119,9 +119,9 @@ input[type="text"],input[type=password]{padding-left:5%;padding-right:5%;
 .clear2{clear:both}
 .caption_blind{width:0;height:0;text-indent:-9999px;font-size:0;overflow:hidden}
 .text_over{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-#skipNav{position:absolute;left:-9999px;text-align:center;width:100%;height:90px;background:rgba(0,0,0,0.8);color:#fff;font-size:30px;text-align:center;width:100%;line-height:90px;z-index:100}
-#skipNav:focus{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-
+#skipNav{position:absolute;left:-9999px;text-align:center;width:100%;height:90px;background:rgba(0,0,0,0.8);color:#fff;font-size:30px;text-align:center;width:100%;line-height:90px;z-index:100;top:0;left:0;width:0;height:0;overflow:hidden}
+#skipNav:focus{width:100%;height:90px}
+/**/ 
 /*==== sir.kr common style -start ====*/
   
 /*pop*/
