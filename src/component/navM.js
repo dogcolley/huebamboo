@@ -1,7 +1,6 @@
 import React from 'react';
 
-const navM = () => {
-
+const NavM = () => {
     return (
         <nav className="PT_ds_non T_ps_ab">
             <ul>
@@ -15,4 +14,4 @@ const navM = () => {
 
 }
 
-export default navM;
+export default NavM;
