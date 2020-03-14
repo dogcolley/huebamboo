@@ -5,19 +5,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react'; //if you want mobx store use that
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
 //import rootReducer from './modules';//if you want redux store use that 'module here'
-
 //const sotre = createStore(rootReducer); //make redux
-//const store = new Store(); //make mobx
 
 
-//add Store Mobx
-import Store from './useStores';
-
+//add Store Mobx //if you want mobx store use that
+import {Store} from './useStores';
 
 //if you wand mobx use that Provider 에 props 로 넣어줍니다.
 ReactDOM.render(
-    <Provider store={Store}>
+    <Provider {...Store}>
       <App />
     </Provider>,
     document.getElementById('root')

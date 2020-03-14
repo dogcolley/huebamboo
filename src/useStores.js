@@ -1,16 +1,29 @@
-import React from 'react';
-import { MobXProviderContext } from 'mobx-react';
+import { observable, action, computed, configure } from 'mobx';
+import axios from 'axios';
+configure({ enforceActions: true });
 
-/**
- * React hooks를 사용하는 컴포넌트에서 store를 가져올 때 사용한다.
- * 참조) https://mobx-react.js.org/recipes-migration#hooks-for-the-rescue
- */
-function useStores() {
+class UserStore {
+  // 값들에 'observable'로 표시함으로써 'observers'에 의해 관찰됩니다.
+    @observable users = [];
+    @observable selectedUser = {};
+    @computed get selectedId() { return this.selectedUser.id; }
 
+    // enforceActions 모드에서는 오직 action만 mobx state를 변경할 수 있습니다.
+    @action setUsers = (users) => { this.users = [...users]; }
+    @action selectUser = (user) => { this.selectedUser = user; }
 
+    // observable state를 clear 하기
+    @action clearSelectedUser = () => { this.selectedUser = {}; }
 
-    
-  return React.useContext(MobXProviderContext);
+    @action getUsers() {
+      // ajax 호출과 MobX action의 동기화
+      axios.get('http://jsonplaceholder.typicode.com/users')
+        .then(response => {
+          this.setUsers(response.data)
+        });
+    }
 }
 
-export default useStores;
+const store = new UserStore();
+
+export default store;

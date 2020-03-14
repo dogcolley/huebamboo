@@ -11,13 +11,12 @@ import Content from './component/content';
 import Aside from './component/aside';
 
 //add Store
-import { useStores } from './useStores'
+import { useStores } from './useStores';
 
 //make app here
 function App() {
-  console.log(Store);
   //data setting 
-  const { Store } = useStores();
+  //const { Store } = useStores();
   /*
   const BestList = new Array();
   const NewList = new Array();
