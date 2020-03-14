@@ -2,13 +2,18 @@ import React,{useState, useRef, useCallback, useLayoutEffect} from 'react';
 import {Route, Link} from 'react-router-dom'; //if you want router use that <Route path="주소규칙" component={보여 줄 컴퍼넌트} />
 import './css/App.scss';
 import axios  from 'axios';
-import { observable, reaction, computed, autorun } from 'mobx';
+import { decorate, observable, action } from 'mobx';
+import { observer } from 'mobx-react';
 
 //compunet
 import Head from './component/head';
 import Content from './component/content';
 import Aside from './component/aside';
 
+//make redux here 
+@inject('store')
+@observer
+//make app here
 function App() {
   //data setting 
   const BestList = new Array();
