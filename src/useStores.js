@@ -1,4 +1,4 @@
-import { observable, reaction, action, computed, configure } from 'mobx';
+import { observable,decorate, reaction , action, computed, configure } from 'mobx';
 import { MobXProviderContext, inject} from 'mobx-react';
 import React,{ createContext } from "react"
 import axios from 'axios';
@@ -7,6 +7,33 @@ console.log('here mobx make useContext');
 
 
 
+class UseStore {
+  store = observable({
+    a : 1
+  });
+
+  wicthHue = reaction(
+    () => UseStore.a,
+    (value, reaction) => {
+      console.log(`a 값이 ${value} 로 바뀌었네요!`);
+    }
+  );
+
+  sum = computed(() => {
+    console.log('계산중이예요!');
+    return test.a+1;
+  });
+  
+  action = action(() => {
+      this.store.a++;
+  }); 
+
+
+}
+
+
+export const UseStoreContext = createContext(new UseStore());
+/*
 export class useStores {
 
   stores = observable({
@@ -20,6 +47,7 @@ export class useStores {
   });
   
 }
+*/
 
 
 /*
@@ -31,19 +59,6 @@ function useStores() {
 export default useStores;
 */
 
-/*
-const useStores = observable({
-  BestList : new Array(),
-  NewList : new Array(),
-  CommendList : new Array(),
-  CommendList2 : new Array(),
-  BgTheme : 'wirte', 
-  a:1,
-  b:2,
-});
-
-export const useStoresContext = createContext(new useStores())
-*/
 
 /*
 function reducer(state, action) {
@@ -58,6 +73,19 @@ function reducer(state, action) {
       return state;
   }
 }
+*/
+
+/*
+const UseStore = observable({
+  BestList : new Array(),
+  NewList : new Array(),
+  CommendList : new Array(),
+  CommendList2 : new Array(),
+  BgTheme : 'wirte', 
+  a:1,
+  b:2,
+});
+
 
 console.log(UseStore.a);
 console.log(UseStore.b);
@@ -94,7 +122,7 @@ UseStore.b = 20;
 //**** 여러번 조회해도 computed 안의 함수를 다시 호출하지 않지만..
 console.log(sum.value);
 console.log(sum.value);
-
+export const useStoresContext = createContext(new UseStore())
 */
 
 /*

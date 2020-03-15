@@ -13,6 +13,9 @@ import Head from './component/head'; // head in mobile's nav btn's
 import Content from './component/content'; //content in bestlist, newlist, histoy, commned
 import Aside from './component/aside'; // aside in modal's loign, remove, 신고
 
+//use mobx 
+import {UseStore} from './useStores';
+
 
 //make app here
 function App() {

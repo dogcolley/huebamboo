@@ -1,4 +1,7 @@
-import React from 'react';
+import React,{useContext, useState, useEffect} from 'react';
+import { observable,decorate, reaction , action, computed, configure } from 'mobx';
+import { observer,inject,MobXProviderContext } from "mobx-react";
+import {UseStoreContext} from '../useStores';
 
 //component 
 import HistoryList from './history';
@@ -8,7 +11,13 @@ import NewList from './newList';
 
 
 
-const Content = () => {
+const Content = observer(() => {
+  
+  const test = useContext(UseStoreContext);
+  setInterval(() => {
+    console.log('content부분: '+ test.store.a);
+  }, (1000));
+
     return(
         <section id="J_content" className="clear T_ht_full">
           <h2 className="sound_only">휴월드 익명게시판</h2>
@@ -18,6 +27,6 @@ const Content = () => {
           <Commend/>
         </section>
     )
-}
+});
 
 export default Content;
