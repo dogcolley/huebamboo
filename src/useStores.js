@@ -2,7 +2,7 @@ import { observable, action, computed, configure } from 'mobx';
 import axios from 'axios';
 configure({ enforceActions: true });
 
-class UserStore {
+class UserStore {/*
   // 값들에 'observable'로 표시함으로써 'observers'에 의해 관찰됩니다.
     @observable users = [];
     @observable selectedUser = {};
@@ -21,9 +21,8 @@ class UserStore {
         .then(response => {
           this.setUsers(response.data)
         });
-    }
+    }*/
 }
-
 const store = new UserStore();
 
-export default store;
+export default store; 
