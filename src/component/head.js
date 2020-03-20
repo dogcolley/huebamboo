@@ -9,9 +9,7 @@ import {UseStoreContext} from '../useStores';
 const Head = observer(() => {
 
   const test = useContext(UseStoreContext);
-  const add = (e) =>{
-    test.store.a ++;
-  }
+
   // **** computed 로 특정 값 캐싱 애가 action 비슷한 애인듯
   
 
@@ -25,7 +23,7 @@ const Head = observer(() => {
       textAlign:'center',
       color:'#000',
       width:100+'%'
-    }} onClick={add}>테스트 {test.store.a}</button>
+    }} onClick={test.action}>테스트 {test.store.a}</button>
     <header>
         <h1><span className="sound_only">휴월드 대나무소통방입니다.</span></h1>
         <NavM/>
