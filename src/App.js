@@ -1,4 +1,4 @@
-import React,{useState, useRef, useCallback, useLayoutEffect} from 'react';
+import React,{useContext,seState, useRef, useCallback, useLayoutEffect} from 'react';
 ///import {Route, Link} from 'react-router-dom'; //if you want router use that <Route path="주소규칙" component={보여 줄 컴퍼넌트} />
 import './css/App.scss';
 
@@ -14,11 +14,26 @@ import Content from './component/content'; //content in bestlist, newlist, histo
 import Aside from './component/aside'; // aside in modal's loign, remove, 신고
 
 //use mobx 
-import {UseStore} from './useStores';
+import {UseStoreContext} from './useStores';
 
 
 //make app here
 function App() {
+
+  //setting instant state event and front (window)
+  const store = useContext(UseStoreContext);
+
+  //function setting window size
+  const updateWidthAndHeight = () => {
+    store.win_wd = window.innerWidth;
+    store.win_ht = window.innerHeight;
+    //window.removeEventListener("resize", updateWidthAndHeight);
+  };
+
+  //setting useEffect window resize
+  window.addEventListener("resize", updateWidthAndHeight);
+
+  
   return (
     <>  
       <a href="#J_content" id="skipNav">본문바로가기</a>

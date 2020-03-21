@@ -19,11 +19,6 @@ const Head = observer(() => {
   //console.log(stores);
   return(
     <>
-    <button type="button" style={{
-      textAlign:'center',
-      color:'#000',
-      width:100+'%'
-    }} onClick={test.action}>테스트 {test.store.a}</button>
     <header>
         <h1><span className="sound_only">휴월드 대나무소통방입니다.</span></h1>
         <NavM/>
