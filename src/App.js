@@ -1,4 +1,4 @@
-import React,{useContext,seState, useRef, useCallback, useLayoutEffect} from 'react';
+import React,{useContext,useState, useRef, useCallback, useLayoutEffect, useEffect} from 'react';
 ///import {Route, Link} from 'react-router-dom'; //if you want router use that <Route path="주소규칙" component={보여 줄 컴퍼넌트} />
 import './css/App.scss';
 
@@ -22,22 +22,30 @@ function App() {
 
   //setting instant state event and front (window)
   const store = useContext(UseStoreContext);
+  const [device,setDevice] = useState(store.device);
+  
+  window.addEventListener("resize", () =>{
+    store.updateDevice(store);
+    setDevice(store.device);
+  });
 
-  //function setting window size
-  const updateWidthAndHeight = () => {
-    store.win_wd = window.innerWidth;
-    store.win_ht = window.innerHeight;
-    //window.removeEventListener("resize", updateWidthAndHeight);
-  };
-
-  //setting useEffect window resize
-  window.addEventListener("resize", updateWidthAndHeight);
+  window.addEventListener("load", () =>{
+    store.updateDevice(store);
+    setDevice(store.device);
+  });
+  
+  useEffect(() => {
+    //여기서 hook mount 작업이 진행이 된다.
+    //console.log('resize event use');
+  });
 
   
   return (
     <>  
       <a href="#J_content" id="skipNav">본문바로가기</a>
-      <div className="T_ps_rl T_wd_full T_ht_full">
+      <div 
+        className={store.device+' T_ps_rl T_wd_full T_ht_full'}
+      >
         <Head/> 
         <Content/>
         <Aside/>

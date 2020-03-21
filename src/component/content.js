@@ -12,11 +12,13 @@ import NewList from './newList';
 
 
 const Content = observer(() => {
-  
+
+  /*
   const test = useContext(UseStoreContext);
   setInterval(() => {
     console.log('content부분: '+ test.store.a);
   }, (1000));
+  */
 
     return(
         <section id="J_content" className="clear T_ht_full">

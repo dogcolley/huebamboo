@@ -14,18 +14,66 @@ class UseStore {
     CommendList : new Array(),
     CommendList2 : new Array(),
     BgTheme : 'wirte', 
+    stateM : '',
   });
 
  //functions 
+
+ //01. state change
  Refresh = () => { //refresh App;
-     
+    window.location.reload();
  }
+
+ ChangeTheme = () => {
+
+ }
+
+
+ //02. window resize event
+
+ updateDevice =  action((store) => {
+  store.win_wd = window.innerWidth;
+  store.win_ht = window.innerHeight;
+
+  if(store.win_wd >1024) store.device = 'PC';
+  else if(store.win_wd > 640) store.device = 'TAB';
+  else store.device = 'M';
+  //window.removeEventListener("resize", updateWidthAndHeight);
+});
+
+//03. mobile Nav click event 
+changeNavM = (store, state) =>{
+  if(state == '')store.stateM = ''; 
+  if(state == '')store.stateM = ''; 
+  if(state == '')store.stateM = ''; 
+}
+
+//04. use Member [login,logout]
 
  Login = () =>{
    //userId
    //userPw
 
  }
+
+//05. list
+GetList = () => {
+  //mode
+  //idx
+
+  //array ?
+  //object
+  //  idx
+  //  commend Num
+  //  contend
+  //  date
+  //  ip
+  //  like
+  //  sad
+  //  pw
+}
+
+//06. content control
 
  UpdateCommend = () =>{
    //ip
@@ -60,32 +108,15 @@ class UseStore {
    //content
    //ip
    //date
-
  }
 
- GetList = () => {
-   //mode
-   //idx
-
-   //array ?
-   //object
-   //  idx
-   //  commend Num
-   //  contend
-   //  date
-   //  ip
-   //  like
-   //  sad
-   //  pw
- }
+ 
 
  ClickLS = () => {
 
  }
 
- ChangeTheme = () => {
 
- }
 
   wicthHue = reaction(
     () => UseStore.a,
@@ -98,10 +129,7 @@ class UseStore {
     console.log('계산중이예요!');
     return test.a+1;
   });
-  
-  action = action(() => {
-      this.store.a++;
-  }); 
+
 
 
 }
