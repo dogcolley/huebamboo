@@ -8,7 +8,7 @@ import NavM from './navM';
 
 const Head = observer(() => {
 
-
+  /*
   const store = useContext(UseStoreContext);
   const [device,setDevice] = useState(store.device);
 
@@ -26,12 +26,14 @@ const Head = observer(() => {
     //여기서 hook mount 작업이 진행이 된다.
     //console.log('resize event use');
   });
+  */
 
   return(
     <>
     <header>
         <h1><span className="sound_only">휴월드 대나무소통방입니다.</span></h1>
-        { store.device == 'M' ?  <NavM/> : ''}
+        { //store.device == 'M' ?  <NavM/> : ''
+        }
     </header>
     </>
   );

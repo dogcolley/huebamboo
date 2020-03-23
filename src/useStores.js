@@ -6,7 +6,8 @@ import axios from 'axios';
 
 class UseStore {
   store = observable({
-    device : '',
+    test:'',
+    device : "PC",
     win_wd : 0,
     win_ht : 0,
     BestList : new Array(),
@@ -23,10 +24,10 @@ class UseStore {
  Refresh = () => { //refresh App;
     window.location.reload();
  }
-
- ChangeTheme = () => {
-
- }
+ 
+ ChangeTheme = action((store) => {
+    store.BgTheme = store.BgTheme == 'wirte' ? 'dark' : 'wirte';
+  });
 
 
  //02. window resize event
@@ -34,7 +35,10 @@ class UseStore {
  updateDevice =  action((store) => {
   store.win_wd = window.innerWidth;
   store.win_ht = window.innerHeight;
-
+    console.log(store);
+    console.log(store.win_wd);
+    console.log(store.win_ht);
+    console.log(store.device);
   if(store.win_wd >1024) store.device = 'PC';
   else if(store.win_wd > 640) store.device = 'TAB';
   else store.device = 'M';
@@ -53,7 +57,6 @@ changeNavM = (store, state) =>{
  Login = () =>{
    //userId
    //userPw
-
  }
 
 //05. list
@@ -116,20 +119,25 @@ GetList = () => {
 
  }
 
+ Declaration = () =>{
 
 
+
+ }
+
+  //이게 이벤트가 끝나고 싷행되는 부분
   wicthHue = reaction(
-    () => UseStore.a,
+    () => UseStore.store,
     (value, reaction) => {
       console.log(`a 값이 ${value} 로 바뀌었네요!`);
     }
   );
 
+  //여기가 데이터 변화하는 도중에 실행되는 이벤트 부분
   sum = computed(() => {
     console.log('계산중이예요!');
     return test.a+1;
   });
-
 
 
 }

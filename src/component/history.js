@@ -8,10 +8,10 @@ import {UseStoreContext} from '../useStores';
 
 const History = () => {
 
-        
+    /*    
     const store = useContext(UseStoreContext);
     const [device,setDevice] = useState(store.device);
-  
+    */
 
 
     return(
