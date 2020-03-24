@@ -142,6 +142,23 @@ GetList = () => {
 
 }
 
+/* 
+//데코레이터 부분을 여기로 추가다 만약에 대코레이터를 사용하지않을경우에는 eject나 babel로 설정해서 @를 사용하는 문법을 쓰면 된다.
+// decorate(지정클래스 , { 
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
+//})
+
+decorate(ViewStore, {
+  isShowModal: observable,
+  hideModal: action,
+  showModal: action,
+})
+*/
+
 
 export const UseStoreContext = createContext(new UseStore());
 
