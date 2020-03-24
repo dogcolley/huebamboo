@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 class UseStore {
-  store = new Object({
+  store = observable({
     test:'',
     device : "PC",
     win_wd : 0,
@@ -25,14 +25,14 @@ class UseStore {
     window.location.reload();
  }
  
- ChangeTheme = (store) => {
+ ChangeTheme = action((store) => {
     store.BgTheme = store.BgTheme == 'wirte' ? 'dark' : 'wirte';
-  };
+  });
 
 
  //02. window resize event
 
- updateDevice = (store) => {
+ updateDevice =  action((store) => {
   store.win_wd = window.innerWidth;
   store.win_ht = window.innerHeight;
     console.log(store);
@@ -43,10 +43,10 @@ class UseStore {
   else if(store.win_wd > 640) store.device = 'TAB';
   else store.device = 'M';
   //window.removeEventListener("resize", updateWidthAndHeight);
-};
+});
 
 //03. mobile Nav click event 
-changeNavM = (store, state) => {
+changeNavM = (store, state) =>{
   if(state == '')store.stateM = ''; 
   if(state == '')store.stateM = ''; 
   if(state == '')store.stateM = ''; 
@@ -126,7 +126,7 @@ GetList = () => {
  }
 
   //이게 이벤트가 끝나고 싷행되는 부분
-  wicthHue = (
+  wicthHue = reaction(
     () => UseStore.store,
     (value, reaction) => {
       console.log(`a 값이 ${value} 로 바뀌었네요!`);
@@ -142,19 +142,21 @@ GetList = () => {
 
 }
 
-
-decorate(UseStore, {
-  store: observable,
-  ChangeTheme: action,
-  updateDevice: action,
-})
-
 /* 
 //데코레이터 부분을 여기로 추가다 만약에 대코레이터를 사용하지않을경우에는 eject나 babel로 설정해서 @를 사용하는 문법을 쓰면 된다.
 // decorate(지정클래스 , { 
 //  함수명 : mobx 대코,
-// reaction, computed , action , observable
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
+//  함수명 : mobx 대코,
 //})
+
+decorate(ViewStore, {
+  isShowModal: observable,
+  hideModal: action,
+  showModal: action,
+})
 */
 
 

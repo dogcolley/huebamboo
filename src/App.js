@@ -42,7 +42,6 @@ function App() {
     //console.log('resize event use');
   });
 
-  
   return (
     <>  
       <a href="#J_content" id="skipNav">본문바로가기</a>
