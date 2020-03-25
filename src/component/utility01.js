@@ -7,21 +7,15 @@ const utility01 = observer(() => {
 
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
-    const [theme,setTheme] = useState(store.BgTheme);
 
-    const setThemes = () =>  {
-        useStores.ChangeTheme(store);
-        setTheme(store.BgTheme);
-        console.log(theme);
-    }
     
     return (
         
         <div className="T_ps_ab clear T_wd_full T_pd_Pwd5" style={{top:2+'%',left:0}}>
             <button className="T_mg_Prt2" onClick={useStores.Refresh}>새로고침</button>
-            <button className="T_mg_Prt2" onClick={useStores.ChangeNick}>닉로그인</button>
+            <button className="T_mg_Prt2" onClick={useStores.changeNick}>닉로그인</button>
             <button onClick={useStores.Declaration}>신고하기</button>
-            <button className="T_fl_rt" onClick={setThemes}>야간테마</button>
+            <button className="T_fl_rt" onClick={useStores.changeTheme}>야간테마</button>
         </div>
     )
 });

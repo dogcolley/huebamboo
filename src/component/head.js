@@ -8,26 +8,6 @@ import NavM from './navM';
 
 const Head = observer(() => {
 
-  /*
-  const store = useContext(UseStoreContext);
-  const [device,setDevice] = useState(store.device);
-
-  window.addEventListener("resize", () =>{
-    store.updateDevice(store);
-    setDevice(store.device);
-  });
-
-  window.addEventListener("load", () =>{
-    store.updateDevice(store);
-    setDevice(store.device);
-  });
-  
-  useEffect(() => {
-    //여기서 hook mount 작업이 진행이 된다.
-    //console.log('resize event use');
-  });
-  */
-
   return(
     <>
     <header>

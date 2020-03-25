@@ -10,23 +10,25 @@ class UseStore {
     device : "PC",
     win_wd : 0,
     win_ht : 0,
-    BestList : new Array(),
-    NewList : new Array(),
-    CommendList : new Array(),
-    CommendList2 : new Array(),
-    BgTheme : 'wirte', 
+    bestList : new Array(),
+    newList : new Array(),
+    commendList : new Array(),
+    commendList2 : new Array(),
+    bgTheme : 'wirte', 
     stateM : '',
   });
 
  //functions 
 
  //01. state change
- Refresh = () => { //refresh App;
+ refresh = () => { //refresh App;
     window.location.reload();
  }
  
- ChangeTheme = (store) => {
-    store.BgTheme = store.BgTheme == 'wirte' ? 'dark' : 'wirte';
+ changeTheme = (store) => {
+    store.bgTheme = store.bgTheme == 'wirte' ? 'dark' : 'wirte';
+
+    console.log(store.bgTheme);
   };
 
 
@@ -35,10 +37,6 @@ class UseStore {
  updateDevice = (store) => {
   store.win_wd = window.innerWidth;
   store.win_ht = window.innerHeight;
-    console.log(store);
-    console.log(store.win_wd);
-    console.log(store.win_ht);
-    console.log(store.device);
   if(store.win_wd >1024) store.device = 'PC';
   else if(store.win_wd > 640) store.device = 'TAB';
   else store.device = 'M';
@@ -54,13 +52,13 @@ changeNavM = (store, state) => {
 
 //04. use Member [login,logout]
 
- Login = () =>{
-   //userId
-   //userPw
+ login = () =>{
+   console.log('login join...');
+   return 'test';
  }
 
 //05. list
-GetList = () => {
+getList = () => {
   //mode
   //idx
 
@@ -78,13 +76,13 @@ GetList = () => {
 
 //06. content control
 
- UpdateCommend = () =>{
+ updateCommend = () =>{
    //ip
    //name
    //contend
  }
 
- UpdateContent = () =>{
+ updateContent = () =>{
     /* 
     idx
      commend Num
@@ -97,17 +95,17 @@ GetList = () => {
      */
  }
  
- DeleteContent = () =>{
+ deleteContent = () =>{
    //idx
    //pw
  }
 
- DeleteCommend = () =>{
+ deleteCommend = () =>{
    //idx
    //pw
  }
 
- UpdateDeclaration = () =>{
+ updateDeclaration = () =>{
    //content
    //ip
    //date
@@ -115,39 +113,36 @@ GetList = () => {
 
  
 
- ClickLS = () => {
+ clickLS = () => {
 
  }
 
- Declaration = () =>{
+ declaration = () =>{
 
 
 
  }
 
   //이게 이벤트가 끝나고 싷행되는 부분
-  wicthHue = (
-    () => UseStore.store,
-    (value, reaction) => {
+  wicthHue = () => {
+    /*
+    UseStore.store , (value, reaction) =>{
       console.log(`a 값이 ${value} 로 바뀌었네요!`);
     }
-  );
-
-  //여기가 데이터 변화하는 도중에 실행되는 이벤트 부분
-  sum = computed(() => {
-    console.log('계산중이예요!');
-    return test.a+1;
-  });
-
-
+    */
+  }
 }
 
 
-decorate(UseStore, {
+decorate(UseStore , {
   store: observable,
-  ChangeTheme: action,
+  changeTheme: action,
   updateDevice: action,
-})
+  /*
+  sum : computed
+  wicthHue : reaction,
+  */
+});
 
 /* 
 //데코레이터 부분을 여기로 추가다 만약에 대코레이터를 사용하지않을경우에는 eject나 babel로 설정해서 @를 사용하는 문법을 쓰면 된다.

@@ -22,8 +22,10 @@ function App() {
 
   //setting instant state event and front (window)
   const useStores = useContext(UseStoreContext);
+  
   const store = useStores.store;
-  const [device,setDevice] = useState(store.device);
+  const [device,setDevice] = useState(useStores.store.device);
+  //const [device,setDevice] = useState(useStores.store.bgTheme);
 
   window.addEventListener("resize", () =>{
     useStores.updateDevice(store);
@@ -35,18 +37,21 @@ function App() {
     useStores.updateDevice(store);
     setDevice(store.device);
   });
-
   
   useEffect(() => {
-    //여기서 hook mount 작업이 진행이 된다.
-    //console.log('resize event use');
+    
   });
 
   return (
     <>  
+      <div>
+        {
+          //store
+        }
+      </div>
       <a href="#J_content" id="skipNav">본문바로가기</a>
       <div 
-        className={store.device+' ' + store.BgTheme +' T_ps_rl T_wd_full T_ht_full'}
+        className={store.device+' ' + store.bgTheme +' T_ps_rl T_wd_full T_ht_full'}
       >
         <Head/> 
         <Content/>
