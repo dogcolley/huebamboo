@@ -1,7 +1,9 @@
 import React,{useContext, useState, useEffect} from 'react';
+/*
 import { observable,decorate, reaction , action, computed, configure } from 'mobx';
 import { observer,inject,MobXProviderContext } from "mobx-react";
 import {UseStoreContext} from '../useStores';
+*/
 
 //component 
 import HistoryList from './history';
@@ -11,7 +13,7 @@ import NewList from './newList';
 
 
 
-const Content = observer(() => {
+function Content() {
 
   /*
   const test = useContext(UseStoreContext);
@@ -29,6 +31,6 @@ const Content = observer(() => {
           <Commend/>
         </section>
     )
-});
+};
 
 export default Content;

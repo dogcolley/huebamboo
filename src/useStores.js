@@ -27,8 +27,7 @@ class UseStore {
  
  changeTheme = (store) => {
     store.bgTheme = store.bgTheme == 'wirte' ? 'dark' : 'wirte';
-
-    console.log(store.bgTheme);
+    return store.bgTheme;
   };
 
 
@@ -38,9 +37,10 @@ class UseStore {
   store.win_wd = window.innerWidth;
   store.win_ht = window.innerHeight;
   if(store.win_wd >1024) store.device = 'PC';
-  else if(store.win_wd > 640) store.device = 'TAB';
+  else if(store.win_wd > 768) store.device = 'TAB';
   else store.device = 'M';
-  //window.removeEventListener("resize", updateWidthAndHeight);
+  
+  return store.device;
 };
 
 //03. mobile Nav click event 

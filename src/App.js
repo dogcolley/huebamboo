@@ -25,33 +25,33 @@ function App() {
   
   const store = useStores.store;
   const [device,setDevice] = useState(useStores.store.device);
-  //const [device,setDevice] = useState(useStores.store.bgTheme);
+  const [theme,setTheme] = useState(useStores.store.bgTheme);
+
+  window.addEventListener("click", () =>{
+      setTheme(store.bgTheme);
+  });
 
   window.addEventListener("resize", () =>{
-    useStores.updateDevice(store);
-    setDevice(store.device);
+    const a = useStores.updateDevice(store);
+    setDevice(a);
   });
-  
-  
+
   window.addEventListener("load", () =>{
-    useStores.updateDevice(store);
-    setDevice(store.device);
+    const a = useStores.updateDevice(store);
+    setDevice(a);
   });
   
+  /*
   useEffect(() => {
     
   });
+  */
 
   return (
     <>  
-      <div>
-        {
-          //store
-        }
-      </div>
       <a href="#J_content" id="skipNav">본문바로가기</a>
       <div 
-        className={store.device+' ' + store.bgTheme +' T_ps_rl T_wd_full T_ht_full'}
+        className={device+' ' + theme +' T_ps_rl T_wd_full T_ht_full'}
       >
         <Head/> 
         <Content/>
