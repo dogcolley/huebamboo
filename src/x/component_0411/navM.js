@@ -6,22 +6,9 @@ const NavM = () => {
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
     const [theme,setTheme] = useState(store.bgTheme);
-    let a = 0;
 
     const changeTheme = () =>{
-        useStores.changeTheme(store);
-        a++;
-        setTheme(a);
-    }
-
-    const chageState1 = () =>{
-        useStores.changeNavM(store,'listChnage');
-        a++;
-        setTheme(a);
-    }
-    const chageState2 = () =>{
-        useStores.changeNavM(store,'historyShow');
-        a++;
+        const a = useStores.changeTheme(store);
         setTheme(a);
     }
 
@@ -38,10 +25,8 @@ const NavM = () => {
             <ul>
                 <li><button type="button" onClick={useStores.refresh}>새로고침</button></li>
                 <li><button type="button" onClick={changeTheme}>테마변경</button></li>
-                <li><button type="button" onClick={chageState1}>
-                    {store.activeNL ? '베스트글' : '최신글'}    
-                </button></li>
-                <li><button type="button" onClick={chageState2}>히스토리보기</button></li>
+                <li><button type="button" onClick={useStores.changeNavM()}>최신글보기</button></li>
+                <li><button type="button" onClick={useStores.changeNavM()}>히스토리보기</button></li>
             </ul>
         </nav>
     )

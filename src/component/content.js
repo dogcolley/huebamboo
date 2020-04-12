@@ -1,4 +1,5 @@
 import React,{useContext, useState, useEffect} from 'react';
+import {UseStoreContext} from '../useStores';
 /*
 import { observable,decorate, reaction , action, computed, configure } from 'mobx';
 import { observer,inject,MobXProviderContext } from "mobx-react";
@@ -6,29 +7,29 @@ import {UseStoreContext} from '../useStores';
 */
 
 //component 
-import HistoryList from './history';
-import BestList from './bestList';
-import Commend from './commend';
-import NewList from './newList';
-
-
+import BestList from './listAticle';
+import NewList from './listAticle';
+import Commend from './sideAticle';
+import HistoryList from './sideAticle';
 
 function Content() {
 
-  /*
-  const test = useContext(UseStoreContext);
-  setInterval(() => {
-    console.log('content부분: '+ test.store.a);
-  }, (1000));
-  */
+    const useStore = useContext(UseStoreContext);
+    const store = useStore.store;
+    const [test,setTest]= useState(1);
+    window.addEventListener("click", () =>{
+      let a = test;
+      a ++;
+      setTest(a);
+    });
 
     return(
         <section id="J_content" className="clear T_ht_full">
           <h2 className="sound_only">휴월드 익명게시판</h2>
-          <HistoryList/>
-          <BestList/>
-          <NewList/>
-          <Commend/>
+          { (store.device !== 'M' || store.activeHS) ? <HistoryList setID="historyList" /> : ''}
+          { (store.device == 'PC' || store.activeBL) ? <BestList  setID="bestList" /> : ''}
+          { (store.device == 'PC' || store.activeNL) ? <NewList setID="newList" /> : ''}
+          { (store.activeCM) ?  <Commend setID="commendList" /> : ''}
         </section>
     )
 };

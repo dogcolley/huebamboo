@@ -40,12 +40,6 @@ function App() {
     const a = useStores.updateDevice(store);
     setDevice(a);
   });
-  
-  /*
-  useEffect(() => {
-    
-  });
-  */
 
   return (
     <>  
@@ -55,7 +49,7 @@ function App() {
       >
         <Head/> 
         <Content/>
-        <Aside/>
+        { store.activeAS ? <Aside/> : ''}
       </div>
     </>
   );

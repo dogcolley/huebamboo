@@ -16,9 +16,20 @@ class UseStore {
     commendList2 : new Array(),
     bgTheme : 'wirte', 
     stateM : '',
+    activeCM : false,
+    activeNL : true,
+    activeBL : false,
+    activeHS : false,
+    activeAS : false
   });
 
  //functions 
+ 
+ //00. maker state lists 
+ maker = (setID) => {
+
+ }
+
 
  //01. state change
  refresh = () => { //refresh App;
@@ -32,22 +43,31 @@ class UseStore {
 
 
  //02. window resize event
-
  updateDevice = (store) => {
   store.win_wd = window.innerWidth;
   store.win_ht = window.innerHeight;
   if(store.win_wd >1024) store.device = 'PC';
   else if(store.win_wd > 768) store.device = 'TAB';
   else store.device = 'M';
-  
+
   return store.device;
 };
 
 //03. mobile Nav click event 
 changeNavM = (store, state) => {
-  if(state == '')store.stateM = ''; 
-  if(state == '')store.stateM = ''; 
-  if(state == '')store.stateM = ''; 
+  if(state == 'listChnage'){
+    store.activeNL = store.activeNL ? false : true;
+    store.activeBL = store.activeBL ? false : true;
+  } 
+  if(state == 'historyShow'){
+    store.activeHS = true;
+    store.activeCM = false;
+  } 
+}
+
+openDcrt = () => {
+  console.log('신고하기');
+  this.activeAS = true;
 }
 
 //04. use Member [login,logout]
@@ -105,21 +125,7 @@ getList = () => {
    //pw
  }
 
- updateDeclaration = () =>{
-   //content
-   //ip
-   //date
- }
-
- 
-
  clickLS = () => {
-
- }
-
- declaration = () =>{
-
-
 
  }
 
