@@ -76,12 +76,13 @@ changeNavM = (store, state) => {
   }
 }
 
-openDcrt = () => {
-  this.activeAS = true;
+openDcrt = (store) => {
+  console.log('open modal');
+  store.activeAS = true;
 }
 
-clearDcrt = () => {
-  this.activeAS = false;
+clearDcrt = (store) => {
+  store.activeAS = false;
 }
 
 //04. use Member [login,logout]

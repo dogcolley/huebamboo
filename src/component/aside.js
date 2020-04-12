@@ -1,6 +1,17 @@
-import React from 'react'; 
+import React,{useContext,useState} from 'react';
+import { observer,inject,MobXProviderContext } from "mobx-react";
+import {UseStoreContext} from '../useStores';
 
-const Aside = () => {
+const Aside = observer(() => {
+    
+    const useStores = useContext(UseStoreContext);
+    const store = useStores.store;
+    const [theme,setTheme] = useState(0);
+
+    const state_close = () =>{
+      useStores.clearDcrt(store);
+    }
+
     return (
         <div id="popLogin" className="T_ps_ab T_wd_full T_ht_full" style={{background:'rgba(0,0,0,0.7)',top:0,left:0,zIndex:100}}>
           <div className="T_wd_full T_ht_full T_ds_table">
@@ -11,14 +22,12 @@ const Aside = () => {
                 <input className="T_mg_Pbtm3 U_bd_all01 T_wd_full T_pd_Pht3 T_pd_Pwd4" />
                 <input className="U_bd_all01 T_wd_full T_mg_Pbtm8 T_pd_Pht3 T_pd_Pwd4" />
                 <button type="button" className="T_wd_full T_pd_Pht3 T_mg_Pbtm2 U_bg_c000">보내기</button>
-                <button type="button" className="T_wd_full T_pd_Pht3 U_bd_all01">닫기</button>
+                <button type="button" onClick={state_close} className="T_wd_full T_pd_Pht3 U_bd_all01">닫기</button>
               </form>
             </div>
           </div>
         </div>
-
     )
-
-}
+});
 
 export default Aside;

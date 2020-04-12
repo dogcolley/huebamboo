@@ -24,12 +24,14 @@ function App() {
   const useStores = useContext(UseStoreContext);
   
   const store = useStores.store;
-  const [device,setDevice] = useState(useStores.store.device);
-  const [theme,setTheme] = useState(useStores.store.bgTheme);
+  const [device,setDevice] = useState(store.device);
+  const [theme,setTheme] = useState(store.bgTheme);
+  const [modal,setModal] = useState(store.activeAS);
 
   window.addEventListener("click", () =>{
       setTheme(store.bgTheme);
-  });
+      setModal(store.activeAS);
+    });
 
   window.addEventListener("resize", () =>{
     const a = useStores.updateDevice(store);
@@ -50,7 +52,7 @@ function App() {
         <Head/> 
         <Content/>
         {
-           store.activeAS ? <Aside/> : ''
+           modal ? <Aside/> : ''
         }
       </div>
     </>
