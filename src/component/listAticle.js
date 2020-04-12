@@ -21,7 +21,7 @@ const listAticle  = observer((setID) => {
     }
 
     return(
-        <article id={setID} className="PT_fl_lt T_ht_full TAB_wd_P60 PC_wd_P30 PT_pd_Pwd1 T_pd_Pht4 U_bg_c000 T_ps_rl U_bd_right01">
+        <article id={set_id} className="PT_fl_lt T_ht_full TAB_wd_P60 PC_wd_P30 PT_pd_Pwd1 T_pd_Pht4 U_bg_c000 T_ps_rl U_bd_right01">
         <h3 className="PT_ft_sz25 T_ft_wh700 U_ft_cfff PT_ht_P5 clear">
           {set_tit}
           {
@@ -33,7 +33,7 @@ const listAticle  = observer((setID) => {
             ''
           }
         </h3>
-        <Lists/>
+        <Lists setID={set_id}/>
       </article>
     )
 });

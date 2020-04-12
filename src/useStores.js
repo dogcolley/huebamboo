@@ -16,11 +16,11 @@ class UseStore {
     commendList2 : new Array(),
     bgTheme : 'wirte', 
     stateM : '',
-    activeCM : false,
-    activeNL : true,
-    activeBL : false,
-    activeHS : false,
-    activeAS : false
+    activeCM : false, //commend
+    activeNL : true, //new
+    activeBL : false, //best
+    activeHS : true, // history
+    activeAS : false // side
   });
 
  //functions 
@@ -50,24 +50,38 @@ class UseStore {
   else if(store.win_wd > 768) store.device = 'TAB';
   else store.device = 'M';
 
+  store.activeHS = store.win_wd > 768 ? true : false
+
   return store.device;
 };
 
 //03. mobile Nav click event 
 changeNavM = (store, state) => {
   if(state == 'listChnage'){
-    store.activeNL = store.activeNL ? false : true;
-    store.activeBL = store.activeBL ? false : true;
+    if(store.device =="M" && (store.activeCM || store.activeHS)){
+      store.activeCM = false;
+      store.activeHS = false;
+    }else{
+      store.activeNL = store.activeNL ? false : true;
+      store.activeBL = store.activeBL ? false : true;
+    }
   } 
   if(state == 'historyShow'){
     store.activeHS = true;
     store.activeCM = false;
   } 
+  if(state == 'commendShow'){
+    store.activeCM = true;
+    store.activeHS = false;
+  }
 }
 
 openDcrt = () => {
-  console.log('신고하기');
   this.activeAS = true;
+}
+
+clearDcrt = () => {
+  this.activeAS = false;
 }
 
 //04. use Member [login,logout]

@@ -49,7 +49,9 @@ function App() {
       >
         <Head/> 
         <Content/>
-        { store.activeAS ? <Aside/> : ''}
+        {
+           store.activeAS ? <Aside/> : ''
+        }
       </div>
     </>
   );
