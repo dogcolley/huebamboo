@@ -13,7 +13,6 @@ import Commend from './sideAticle';
 import HistoryList from './sideAticle';
 
 function Content() {
-
     const useStore = useContext(UseStoreContext);
     const store = useStore.store;
     const [test,setTest]= useState(1);
