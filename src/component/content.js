@@ -16,11 +16,16 @@ function Content() {
     const useStore = useContext(UseStoreContext);
     const store = useStore.store;
     const [test,setTest]= useState(0);
-    window.addEventListener("click", () =>{
+
+    function rps (){
+      //console.log('??');
       let a = test;
       a ++;
       setTest(a);
-    });
+      window.removeEventListener("click", rps);
+    }
+
+    window.addEventListener("click", rps);
 
     return(
         <section id="J_content" className="clear T_ht_full">

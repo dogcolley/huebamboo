@@ -20,7 +20,8 @@ class UseStore {
     activeNL : true, //new
     activeBL : false, //best
     activeHS : true, // history
-    activeAS : false // side
+    activeAS : false, // side
+    APIURL : 'http://13.209.3.125:4000/api/'
   });
 
  //functions 
@@ -93,20 +94,33 @@ clearDcrt = (store) => {
  }
 
 //05. list
-getList = () => {
-  //mode
-  //idx
+getList = (store, mode = 'newList') => {
 
-  //array ?
-  //object
-  //  idx
-  //  commend Num
-  //  contend
-  //  date
-  //  ip
-  //  like
-  //  sad
-  //  pw
+  const arr = new Array();
+  axios({
+    method: 'get',
+    url: `http://13.209.3.125:4000/api/post/list`,
+    headers: { 'Access-Control-Allow-Origin': true },
+  })
+  .then(response => {
+      if(mode == 'newList'){
+        store.newList = [];
+        store.newList = response.data.data;
+      }else if(mode == 'bestList'){
+        store.bestList = [];
+        store.bestList = response.data.data;
+      }
+      /*
+      for(let i=0;i<response.data.data.length;i++){
+        if(mode == 'newList'){
+          store.newList.push(response.data.data[i]);
+        }else if(mode == 'bestList'){
+          store.bestList.push(response.data.data[i]);
+        }
+      }
+      */
+  })
+  .catch(err => console.log('err', err));
 }
 
 //06. content control
@@ -159,6 +173,7 @@ decorate(UseStore , {
   store: observable,
   changeTheme: action,
   updateDevice: action,
+  getList: action
   /*
   sum : computed
   wicthHue : reaction,

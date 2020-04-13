@@ -35,7 +35,7 @@ const NavM = () => {
             zIndex:99,
             background: 'pink',
         }}>
-            <ul class="clear T_ly_4 T_ft_ct">
+            <ul className="clear T_ly_4 T_ft_ct">
                 <li><button type="button" onClick={useStores.refresh}>새로고침</button></li>
                 <li><button type="button" onClick={changeTheme}>테마변경</button></li>
                 <li><button type="button" onClick={chageState1}>

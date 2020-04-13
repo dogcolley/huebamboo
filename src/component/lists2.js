@@ -1,10 +1,23 @@
-import React from 'react';
+import React,{useContext, useState, useEffect} from 'react';
+import {UseStoreContext} from '../useStores';
 import List2 from './list2';
+import axios from 'axios';
 
-const Lists = () => {
+const Lists = (set_id) => {
+    const set_value = set_id.setID;
+    const useStore = useContext(UseStoreContext);
+    useStore.getList(useStore.store,set_value);
+    const store = useStore.store;
+    const [arr,setArr] = useState(set_id == 'newList' ? store.newList : store.bestList);
+
+    useEffect(()=>{
+      setArr(set_id == 'newList' ? store.newList : store.bestList);
+      //console.log(arr);
+    });
+
     return (
         <ul className="J_list01 PT_ht_P95 T_ov_at U_bg_cfff">
-            <List2/>
+            <List2 set_arr = {arr} />
         </ul>
     )
 }

@@ -28,10 +28,13 @@ function App() {
   const [theme,setTheme] = useState(store.bgTheme);
   const [modal,setModal] = useState(store.activeAS);
 
-  window.addEventListener("click", () =>{
-      setTheme(store.bgTheme);
-      setModal(store.activeAS);
-    });
+  function rps (){
+    setTheme(store.bgTheme);
+    setModal(store.activeAS);
+    window.removeEventListener("click", rps);
+  }
+
+  window.addEventListener("click", rps);
 
   window.addEventListener("resize", () =>{
     const a = useStores.updateDevice(store);
