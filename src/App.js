@@ -46,11 +46,14 @@ function App() {
     setDevice(a);
   });
 
+  useEffect(()=>{
+    console.log('뚜루루뚜 빠라빠'+store.device);
+  },[store.device]);
   return (
     <>  
       <a href="#J_content" id="skipNav">본문바로가기</a>
       <div 
-        className={device+' ' + theme +' T_ps_rl T_wd_full T_ht_full'}
+        className={store.device+' ' + theme +' T_ps_rl T_wd_full T_ht_full'}
       >
         <Head/> 
         <Content/>

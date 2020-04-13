@@ -11,9 +11,8 @@ const Lists = (set_id) => {
     const [arr,setArr] = useState(set_id == 'newList' ? store.newList : store.bestList);
 
     useEffect(()=>{
-      setArr(set_id == 'newList' ? store.newList : store.bestList);
-      //console.log(arr);
-    });
+      console.log('바뀐다');
+    },[set_id == 'newList' ? store.newList : store.bestList]);
 
     return (
         <ul className="J_list01 PT_ht_P95 T_ov_at U_bg_cfff">
