@@ -6,24 +6,16 @@ const NavM  = observer((setID) => {
 
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
-    const [theme,setTheme] = useState(store.bgTheme);
-    let a = 0;
 
     const changeTheme = () =>{
         useStores.changeTheme(store);
-        a++;
-        setTheme(a);
     }
 
     const chageState1 = () =>{
         useStores.changeNavM(store,'listChnage');
-        a++;
-        setTheme(a);
     }
     const chageState2 = () =>{
         useStores.changeNavM(store,'historyShow');
-        a++;
-        setTheme(a);
     }
 
     
