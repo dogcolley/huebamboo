@@ -78,7 +78,6 @@ changeNavM = (store, state) => {
 }
 
 openDcrt = (store) => {
-  console.log('open modal');
   store.activeAS = true;
 }
 
@@ -95,7 +94,6 @@ clearDcrt = (store) => {
 
 //05. list
 getList = (store, mode = 'newList') => {
-
   const arr = new Array();
   axios({
     method: 'get',
@@ -121,6 +119,8 @@ getList = (store, mode = 'newList') => {
       */
   })
   .catch(err => console.log('err', err));
+
+  console.log('??');
 }
 
 //06. content control

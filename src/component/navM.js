@@ -1,7 +1,8 @@
 import React,{useContext,useState} from 'react';
 import {UseStoreContext} from '../useStores';
+import { observer,inject,MobXProviderContext } from "mobx-react";
 
-const NavM = () => {
+const NavM  = observer((setID) => {
 
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
@@ -45,6 +46,6 @@ const NavM = () => {
             </ul>
         </nav>
     )
-} 
+}); 
 
 export default NavM;

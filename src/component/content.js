@@ -1,5 +1,7 @@
 import React,{useContext, useState, useEffect} from 'react';
 import {UseStoreContext} from '../useStores';
+import { observer,inject,MobXProviderContext } from "mobx-react";
+
 /*
 import { observable,decorate, reaction , action, computed, configure } from 'mobx';
 import { observer,inject,MobXProviderContext } from "mobx-react";
@@ -12,20 +14,19 @@ import NewList from './listAticle';
 import Commend from './sideAticle';
 import HistoryList from './sideAticle';
 
-function Content() {
+const Content  = observer((setID) => {
     const useStore = useContext(UseStoreContext);
     const store = useStore.store;
-    const [test,setTest]= useState(0);
 
-    function rps (){
-      //console.log('??');
-      let a = test;
-      a ++;
-      setTest(a);
-      window.removeEventListener("click", rps);
-    }
+    useEffect(()=>{},[store.activeHS]);
+    
+    useEffect(()=>{},[store.activeCM]);
+    
+    useEffect(()=>{},[store.activeBL]);
 
-    window.addEventListener("click", rps);
+    useEffect(()=>{},[store.activeNL]);
+
+    useEffect(()=>{},[store.device]);
 
     return(
         <section id="J_content" className="clear T_ht_full">
@@ -36,6 +37,6 @@ function Content() {
           { (store.device == 'PC' || store.activeNL) ? <NewList setID="newList" /> : ''}
         </section>
     )
-};
+});
 
 export default Content;

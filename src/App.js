@@ -1,5 +1,6 @@
 import React,{useContext,useState, useRef, useCallback, useLayoutEffect, useEffect} from 'react';
 ///import {Route, Link} from 'react-router-dom'; //if you want router use that <Route path="주소규칙" component={보여 줄 컴퍼넌트} />
+import { observer,inject,MobXProviderContext } from "mobx-react";
 import './css/App.scss';
 
 /*lib a&& plugin 
@@ -18,51 +19,40 @@ import {UseStoreContext} from './useStores';
 
 
 //make app here
-function App() {
 
+const App  = observer(() => {
   //setting instant state event and front (window)
   const useStores = useContext(UseStoreContext);
-  
   const store = useStores.store;
-  const [device,setDevice] = useState(store.device);
-  const [theme,setTheme] = useState(store.bgTheme);
-  const [modal,setModal] = useState(store.activeAS);
-
-  function rps (){
-    setTheme(store.bgTheme);
-    setModal(store.activeAS);
-    window.removeEventListener("click", rps);
-  }
-
-  window.addEventListener("click", rps);
 
   window.addEventListener("resize", () =>{
-    const a = useStores.updateDevice(store);
-    setDevice(a);
+    useStores.updateDevice(store);
   });
 
   window.addEventListener("load", () =>{
-    const a = useStores.updateDevice(store);
-    setDevice(a);
+    useStores.updateDevice(store);
   });
 
-  useEffect(()=>{
-    console.log('뚜루루뚜 빠라빠'+store.device);
-  },[store.device]);
+  useEffect(()=>{},[useStores.store.device]);
+
+  useEffect(()=>{},[store.bgTheme]);
+  
+  useEffect(()=>{},[store.activeAS]);
+
   return (
     <>  
       <a href="#J_content" id="skipNav">본문바로가기</a>
       <div 
-        className={store.device+' ' + theme +' T_ps_rl T_wd_full T_ht_full'}
+        className={store.device+' ' + store.bgTheme +' T_ps_rl T_wd_full T_ht_full'}
       >
         <Head/> 
         <Content/>
         {
-           modal ? <Aside/> : ''
+           store.activeAS ? <Aside/> : ''
         }
       </div>
     </>
   );
-}
+})
 
 export default App;

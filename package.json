@@ -11,18 +11,21 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "0.19.2",
-    "mobx": "^5.15.4",
+    "core-js": "^3.6.5",
+    "mobx": "^4.15.4",
     "mobx-persist": "^0.4.1",
     "mobx-react": "^6.2.2",
     "mobx-react-form": "^2.0.8",
     "mobx-react-lite": "^1.5.2",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.0",
     "react-icons": "^3.9.0",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
+    "regenerator-runtime": "^0.13.5",
     "valid-url": "^1.0.9",
     "validatorjs": "^3.18.1"
   },
@@ -47,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.8.3"
   }
 }

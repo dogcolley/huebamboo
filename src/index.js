@@ -1,3 +1,9 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/stable';
+import '@babel/plugin-transform-arrow-functions'
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import {BrowserRouter} from 'react-router-dom'; //if you want router use that

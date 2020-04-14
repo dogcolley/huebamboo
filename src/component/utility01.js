@@ -6,25 +6,25 @@ const utility01 = observer(() => {
 
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
-    const [theme,setTheme] = useState(0);
-
+    
     const changeTheme = () =>{
         useStores.changeTheme(store);
-        let a = theme;
-        setTheme(a++);
     }
 
     const changeState1 = () =>{
         useStores.changeNavM(store,'historyShow');
-        let a = theme;
-        setTheme(a++);
     }
 
     const openDeclaration = () =>{
         useStores.openDcrt(store);
-        let a = theme;
-        setTheme(a++);
     }
+
+    useEffect(()=>{},[store.bgTheme]);
+    useEffect(()=>{},[store.activeNL]);
+    useEffect(()=>{},[store.activeBL]);
+    useEffect(()=>{},[store.activeHS]);
+    useEffect(()=>{},[store.activeCM]);
+
 
     return (
         

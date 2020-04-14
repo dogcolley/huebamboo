@@ -8,15 +8,14 @@ const Lists = (set_id) => {
     const useStore = useContext(UseStoreContext);
     useStore.getList(useStore.store,set_value);
     const store = useStore.store;
-    const [arr,setArr] = useState(set_id == 'newList' ? store.newList : store.bestList);
+    const arr = set_id == 'newList' ? store.newList : store.bestList;
 
     useEffect(()=>{
-      console.log('바뀐다');
     },[set_id == 'newList' ? store.newList : store.bestList]);
 
     return (
-        <ul className="J_list01 PT_ht_P95 T_ov_at U_bg_cfff">
-            <List2 set_arr = {arr} />
+        <ul className="J_list01 PT_ht_P95 T_ov_at U_bg_cfff U_ov_at">
+            {arr.map((value)=> <List2 set_arr={value} key={value.id} /> )}
         </ul>
     )
 }
