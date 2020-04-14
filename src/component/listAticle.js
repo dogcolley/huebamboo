@@ -8,19 +8,23 @@ const listAticle  = observer((setID) => {
     const store = useStores.store;
     const set_id = setID.setID;
     let set_tit = '';
-
     if(set_id == 'bestList') set_tit = '베스트글';
     if(set_id == 'newList') set_tit = '새로운글';
-      
+
+    
+   
+    window.addEventListener("load", () =>{
+      useStores.changeNavM(store,'listChnage');
+      useStores.getNick(store);
+    }); 
+
     const chageState = () =>{
       useStores.changeNavM(store,'listChnage');
     }
 
-    useEffect(()=>{
-    },[store.activeBL]);
+    useEffect(()=>{},[store.activeBL]);
 
-    useEffect(()=>{
-    },[store.activeNL]);
+    useEffect(()=>{},[store.activeNL]);
 
     return(
         <article id={set_id} className="PT_fl_lt T_ht_full TAB_wd_P60 PC_wd_P30 PT_pd_Pwd1 T_pd_Pht4 U_bg_c000 T_ps_rl U_bd_right01">

@@ -3,7 +3,7 @@ import Utility02 from './utility02';
 import Utility03 from './utility03';
 
 const List = (value) => {
-    console.log(value);
+    //console.log(value);
     const set_item = value.set_arr;
     return (
         <li className="T_ps_rl T_pd_Pall5 T_ds_block U_bd_btm01">

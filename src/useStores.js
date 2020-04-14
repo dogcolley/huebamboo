@@ -21,17 +21,15 @@ class UseStore {
     activeBL : false, //best
     activeHS : true, // history
     activeAS : false, // side
-    APIURL : 'http://13.209.3.125:4000/api/'
+    APIURL : 'http://13.209.3.125:4000/api/',
+    memberNick : '',
+    memberIp : '',
+    memberCK : '',
+    writeCon : ''
   });
 
  //functions 
  
- //00. maker state lists 
- maker = (setID) => {
-
- }
-
-
  //01. state change
  refresh = () => { //refresh App;
     window.location.reload();
@@ -86,6 +84,18 @@ clearDcrt = (store) => {
 }
 
 //04. use Member [login,logout]
+getNick = (store,mode='new') =>{
+  if(store.memberNick == '' && mode == 'new'){
+    axios({
+      method: 'get',
+      url: `http://13.209.3.125:4000/api/nick/get`,
+      headers: { 'Access-Control-Allow-Origin': true },
+    }).then(response => {
+      store.memberNick = response.data.nick;
+    })
+  }
+}
+
 
  login = () =>{
    console.log('login join...');
@@ -120,7 +130,6 @@ getList = (store, mode = 'newList') => {
   })
   .catch(err => console.log('err', err));
 
-  console.log('??');
 }
 
 //06. content control
@@ -130,18 +139,39 @@ getList = (store, mode = 'newList') => {
    //name
    //contend
  }
+ 
 
- updateContent = () =>{
-    /* 
-    idx
-     commend Num
-     contend
-     date
-     ip
-     like
-     sad
-     pw
-     */
+  updateContent = async ( store, mode = 'w') => {
+    axios({
+      method: 'post',
+      url: `http://13.209.3.125:4000/api/post/write`,
+      headers: { 'Content-type':'application/json' },
+      data:{
+        nick:store.memberNick, 
+        pw:'1111', 
+        contents: store.writeCon 
+      }
+    })
+  /*
+ updateContent = (store,mode = 'w') =>{
+  axios({
+    method: 'post',
+    url: `http://13.209.3.125:4000/api/post/write`,
+    headers: { 'Content-type': 'application/x-www-form-urlencoded'},
+    headers: {
+      'Content-Type': 'application/json'
+    },
+     data : [{
+      nick:'test2',
+      pw:'1234',
+      contents:'test2'
+    }]
+  })
+  */
+  
+  .then(response => {
+    console.log(response);
+  })
  }
  
  deleteContent = () =>{
@@ -173,7 +203,8 @@ decorate(UseStore , {
   store: observable,
   changeTheme: action,
   updateDevice: action,
-  getList: action
+  getList: action,
+  updateContent: action
   /*
   sum : computed
   wicthHue : reaction,
