@@ -198,7 +198,6 @@ getList = (store, mode = 'newList') => {
   }
 }
 
-
 decorate(UseStore , {
   store: observable,
   changeTheme: action,
