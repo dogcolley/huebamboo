@@ -25,7 +25,7 @@ class UseStore {
     memberNick : '',
     memberIp : '',
     memberCK : '',
-    writeCon : ''
+    writeCon : '',
   });
 
  //functions 
@@ -41,8 +41,8 @@ class UseStore {
   };
 
 
- //02. window resize event
- updateDevice = (store) => {
+//02. window resize event
+updateDevice = (store) => {
   store.win_wd = window.innerWidth;
   store.win_ht = window.innerHeight;
   if(store.win_wd >1024) store.device = 'PC';
@@ -55,7 +55,7 @@ class UseStore {
 };
 
 //03. mobile Nav click event 
-changeNavM = (store, state) => {
+changeNavM = (store, state, id = null) => {
   if(state == 'listChnage'){
     if(store.device =="M" && (store.activeCM || store.activeHS)){
       store.activeCM = false;
@@ -70,8 +70,12 @@ changeNavM = (store, state) => {
     store.activeCM = false;
   } 
   if(state == 'commendShow'){
-    store.activeCM = true;
-    store.activeHS = false;
+    if(id == null )alert('게시물을 선택해주세요');
+    else{
+      this.getCommend(store,id);
+      store.activeCM = true;
+      store.activeHS = false;
+    }
   }
 }
 
@@ -102,9 +106,9 @@ getNick = (store,mode='new') =>{
    return 'test';
  }
 
-//05. list
+//05. get list And Commend
 getList = (store, mode = 'newList') => {
-  const arr = new Array();
+  //const arr = new Array();
   axios({
     method: 'get',
     url: `http://13.209.3.125:4000/api/post/list`,
@@ -132,51 +136,85 @@ getList = (store, mode = 'newList') => {
 
 }
 
-//06. content control
-
- updateCommend = () =>{
-   //ip
-   //name
-   //contend
- }
- 
-
-  updateContent = async ( store, mode = 'w') => {
-    axios({
-      method: 'post',
-      url: `http://13.209.3.125:4000/api/post/write`,
-      headers: { 'Content-type':'application/json' },
-      data:{
-        nick:store.memberNick, 
-        pw:'1111', 
-        contents: store.writeCon 
-      }
-    })
-  /*
- updateContent = (store,mode = 'w') =>{
+//
+getCommend = (store,set_id) => {
+  console.log(set_id);
   axios({
-    method: 'post',
-    url: `http://13.209.3.125:4000/api/post/write`,
-    headers: { 'Content-type': 'application/x-www-form-urlencoded'},
-    headers: {
-      'Content-Type': 'application/json'
-    },
-     data : [{
-      nick:'test2',
-      pw:'1234',
-      contents:'test2'
-    }]
+    method: 'get',
+    url: `http://13.209.3.125:4000/api/post/list`,
+    headers: { 'Access-Control-Allow-Origin': true },
+    data:{
+      post_id :set_id, 
+    }
   })
-  */
-  
   .then(response => {
     console.log(response);
   })
+}
+
+
+//06. content control
+
+//좋아요
+Like = (store,set_id) => {
+  console.log(set_id);
+}
+
+//싫어요
+Bad = (store,set_id) => {
+  console.log(set_id);
+}
+
+//뎃글쓰기
+updateCommend = () =>{
+  //ip
+  //name
+  //contend
+}
+
+//- 글쓰기 
+updateContent = async ( store, mode = 'w') => {
+  const pw = prompt('비밀번호를 입력해주세요');
+  if(pw !== null){
+    axios({
+        method: 'post',
+        url: `http://13.209.3.125:4000/api/post/write`,
+        headers: { 'Content-type':'application/json' },
+        data:{
+          nick:store.memberNick, 
+          pw:pw, 
+          contents: store.writeCon 
+        }
+      })
+    .then(response => {
+      alert('작성완료되었습니다!');
+      this.getList(this.store)
+    })
+  }
  }
  
- deleteContent = () =>{
-   //idx
-   //pw
+ deleteContent = (store,item_id,set_id) =>{
+    console.log(set_id);
+   const pw = prompt('비밀번호를 입력해주세요.\n확인후 게시물이 바로 삭제됩니다.')
+    if(pw !== null){
+      axios({
+        method: 'post',
+        url: `http://13.209.3.125:4000/api/post/delete`,
+        headers: { 'Content-type':'application/json' },
+        data:{
+          post_id :item_id, 
+          pw:pw, 
+        }
+      })
+      .then(response => {
+        alert('삭제 완료')
+        this.getList(this.store,'newList')
+        this.getList(this.store,'bestList')
+      })
+      .catch(function (error) {
+        alert('삭제 실패')
+      })
+  }
  }
 
  deleteCommend = () =>{

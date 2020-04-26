@@ -31,6 +31,8 @@ const App  = observer(() => {
 
   window.addEventListener("load", () =>{
     useStores.updateDevice(store);
+    useStores.getList(store,'newList');
+    useStores.getList(store,'bestList');
   });
 
   useEffect(()=>{},[useStores.store.device]);

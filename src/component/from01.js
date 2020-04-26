@@ -5,15 +5,17 @@ import { observer,inject,MobXProviderContext } from "mobx-react";
 import {UseStoreContext} from '../useStores';
 
 
-const From01  = observer(() => {
+const From01  = observer((value) => {
 
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
 
+    console.log();
+    
     return (
         <form  id="" className="PT_ht_P20 T_fl_Clt T_pd_Ptop6" onSubmit={(e) => {
             e.preventDefault();
-            useStores.updateContent(store,'w');
+            if(value.state == "historyList")useStores.updateContent(store,'w');
         }} >
             <CKEditor
                     editor={ ClassicEditor }
@@ -36,7 +38,9 @@ const From01  = observer(() => {
             />
             {//<input className="IM_bd_all0 T_wd_P80 T_ht_full" name=""  id=""/>
             }
-            <button className="T_wd_P20 T_ht_full btn01">댓글입력</button>
+            <button className="T_wd_P20 T_ht_full btn01">{
+                value.state == "historyList" ? '글쓰기' : '댓글쓰기'
+            }</button>
         </form>
     )
 });
