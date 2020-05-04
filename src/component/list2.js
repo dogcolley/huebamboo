@@ -16,7 +16,7 @@ const List = (value) => {
           <Utility03 item_id = {set_item.id} set_id = {value.setID}/>
         </div>
         <p className="T_pd_Pht5" dangerouslySetInnerHTML={createMarkup()} ></p>
-        <Utility02  item_id = {set_item.id}  set_id = {value.setID}/>
+        <Utility02  item_id = {set_item.id} set_tit={set_item.id+"' "+set_item.nick}  set_id = {value.setID}/>
         </li>
     )
 }

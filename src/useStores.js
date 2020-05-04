@@ -13,7 +13,9 @@ class UseStore {
     bestList : new Array(),
     newList : new Array(),
     commendList : new Array(),
-    commendList2 : new Array(),
+    commendTit : '',
+    commendID : '',
+    historyList : new Array(),
     bgTheme : 'wirte', 
     stateM : '',
     activeCM : false, //commend
@@ -55,7 +57,7 @@ updateDevice = (store) => {
 };
 
 //03. mobile Nav click event 
-changeNavM = (store, state, id = null) => {
+changeNavM = (store, state, id = null, tit = null) => {
   if(state == 'listChnage'){
     if(store.device =="M" && (store.activeCM || store.activeHS)){
       store.activeCM = false;
@@ -73,6 +75,8 @@ changeNavM = (store, state, id = null) => {
     if(id == null )alert('게시물을 선택해주세요');
     else{
       this.getCommend(store,id);
+      store.commendTit = tit;
+      store.commendID = id;
       store.activeCM = true;
       store.activeHS = false;
     }
@@ -136,19 +140,20 @@ getList = (store, mode = 'newList') => {
 
 }
 
-//
+//뎃글 가져오기
 getCommend = (store,set_id) => {
-  console.log(set_id);
   axios({
     method: 'get',
-    url: `http://13.209.3.125:4000/api/post/list`,
+    url: `http://13.209.3.125:4000/api/comment/list/${set_id}`,
     headers: { 'Access-Control-Allow-Origin': true },
     data:{
       post_id :set_id, 
     }
   })
   .then(response => {
-    console.log(response);
+    store.commendList = [];
+    store.commendList = response.data.data;
+    //console.log(response);
   })
 }
 
@@ -163,13 +168,6 @@ Like = (store,set_id) => {
 //싫어요
 Bad = (store,set_id) => {
   console.log(set_id);
-}
-
-//뎃글쓰기
-updateCommend = () =>{
-  //ip
-  //name
-  //contend
 }
 
 //- 글쓰기 
@@ -193,6 +191,7 @@ updateContent = async ( store, mode = 'w') => {
   }
  }
  
+ //- 글삭제
  deleteContent = (store,item_id,set_id) =>{
     console.log(set_id);
    const pw = prompt('비밀번호를 입력해주세요.\n확인후 게시물이 바로 삭제됩니다.')
@@ -217,10 +216,38 @@ updateContent = async ( store, mode = 'w') => {
   }
  }
 
- deleteCommend = () =>{
+//뎃글쓰기
+updateCommend = (store, mode = 'w', wr_id) =>{
+  const pw = prompt('비밀번호를 입력해주세요');
+  if(pw !== null){
+    axios({
+        method: 'post',
+        url: `http://13.209.3.125:4000/api/comment/write`,
+        headers: { 'Content-type':'application/json' },
+        data:{
+          nick:store.memberNick, 
+          pw:pw, 
+          contents: store.writeCon, 
+          post_id : store.commendID
+        }
+      })
+    .then(response => {
+      alert('작성완료되었습니다!');
+      this.getCommend(this.store, store.commendID);
+    })
+  }
+}
+
+//뎃글삭제
+ deleteCommend = (store,item_id,set_id) =>{
    //idx
    //pw
  }
+
+//가져오기
+getHistory = (store) => {
+
+}
 
  clickLS = () => {
 

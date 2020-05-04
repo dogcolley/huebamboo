@@ -13,7 +13,7 @@ const utility02 = observer((item) => {
     useEffect(()=>{},[store.activeCM]);
 
     const showCommend = () => {
-        useStores.changeNavM(store,'commendShow',item.item_id,item.set_id)
+        useStores.changeNavM(store,'commendShow',item.item_id,item.set_tit)
     }
 
     const addLike = () => {

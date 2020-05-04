@@ -28,11 +28,13 @@ const Content  = observer((setID) => {
 
     useEffect(()=>{},[store.device]);
 
+    useEffect(()=>{},[store.CommendID]);
+
     return(
         <section id="J_content" className="clear T_ht_full">
           <h2 className="sound_only">휴월드 익명게시판</h2>
-          { (store.activeHS) ? <HistoryList setID="historyList" /> : ''}
-          { (store.activeCM) ?  <Commend setID="commendList" /> : ''}
+          { (store.activeHS) ? <HistoryList setID="historyList"/> : ''}
+          { (store.activeCM) ?  <Commend setID="commendList"  wrID = {store.CommendID} /> : ''}
           { (store.device == 'PC' || store.activeBL) ? <BestList  setID="bestList" /> : ''}
           { (store.device == 'PC' || store.activeNL) ? <NewList setID="newList" /> : ''}
         </section>

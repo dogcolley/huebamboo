@@ -6,16 +6,14 @@ import {UseStoreContext} from '../useStores';
 
 
 const From01  = observer((value) => {
-
     const useStores = useContext(UseStoreContext);
     const store = useStores.store;
-
-    console.log();
     
     return (
         <form  id="" className="PT_ht_P20 T_fl_Clt T_pd_Ptop6" onSubmit={(e) => {
             e.preventDefault();
             if(value.state == "historyList")useStores.updateContent(store,'w');
+            if(value.state == "commendList")useStores.updateCommend(store,'w');
         }} >
             <CKEditor
                     editor={ ClassicEditor }
